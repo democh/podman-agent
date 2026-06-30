@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.uv/
+
+# Environment
+.env
+
+# Node
+node_modules/
+
+# Data / Runtime
+workspace/
+memories/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

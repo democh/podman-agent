@@ -1,0 +1,34 @@
+[project]
+name = "podman-agent-server"
+version = "0.1.0"
+description = "Minimal viable owli agent without any framework."
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.50.0",
+    "python-dotenv>=1.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.27.0",
+    "python-pptx>=1.0.0",
+    "scrapling[fetchers]>=0.4.9",
+    "httpx>=0.27.0",
+    "python-docx>=1.2.0",
+    "openpyxl>=3.1.5",
+    "pypdf2>=3.0.1",
+    "python-multipart>=0.0.32",
+    "chardet>=7.4.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+podman-agent-server = "podman_agent.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/podman_agent"]

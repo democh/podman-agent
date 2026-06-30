@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podman Agent</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- ═══ Sidebar ═══ -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-title" id="sidebar-title">技能管理</span>
+          <button
+            class="btn btn-ghost btn-icon btn-sm"
+            onclick="toggleSidebar()"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="sidebar-tabs">
+          <div
+            class="sidebar-tab active"
+            data-tab="skills"
+            onclick="switchTab('skills')"
+          >
+            技能
+          </div>
+          <div
+            class="sidebar-tab"
+            data-tab="memory"
+            onclick="switchTab('memory')"
+          >
+            记忆
+          </div>
+        </div>
+        <div class="sidebar-content" id="sidebar-content"></div>
+      </div>
+
+      <!-- ═══ Main ═══ -->
+      <div class="main">
+        <!-- Top Bar -->
+        <div class="topbar">
+          <button
+            class="btn btn-ghost btn-icon"
+            onclick="toggleSidebar()"
+            title="技能与记忆"
+          >
+            <i data-lucide="menu"></i>
+          </button>
+          <span class="logo">Podman Agent</span>
+          <span class="badge" id="model-badge">—</span>
+          <span class="badge" id="tools-badge">—</span>
+          <span class="badge" id="skills-badge" style="display: none">—</span>
+          <div class="spacer"></div>
+          <span class="status-dot" id="status-dot"></span>
+          <span class="status-text" id="status-text">连接中</span>
+          <button
+            class="btn btn-sm"
+            id="reset-btn"
+            disabled
+            onclick="resetChat()"
+          >
+            重置
+          </button>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages" id="messages">
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon"><i data-lucide="bot"></i></div>
+            <div class="empty-title">Podman Agent</div>
+            <div class="empty-desc">
+              输入问题开始对话，或点击左侧菜单管理技能与记忆
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loading-indicator">
+          <div class="loading-spinner"></div>
+          <span>Agent 正在处理...</span>
+        </div>
+
+        <div class="scroll-btn" id="scroll-btn" onclick="scrollToBottom()">
+          <i data-lucide="arrow-down"></i>
+        </div>
+
+        <!-- Input -->
+        <div class="input-area">
+          <div class="input-container">
+            <div class="input-wrapper">
+              <div class="input-box">
+                <textarea
+                  id="input"
+                  placeholder="输入消息... (Enter 发送 · Shift+Enter 换行)"
+                  rows="1"
+                ></textarea>
+              </div>
+              <button
+                class="btn btn-primary"
+                id="send-btn"
+                style="min-height: 42px"
+                disabled
+              >
+                <i data-lucide="send-horizontal"></i>
+                <span id="send-btn-text">发送</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+    <script>lucide.createIcons()</script>
+  </body>
+</html>
